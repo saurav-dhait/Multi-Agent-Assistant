@@ -30,6 +30,10 @@ This code defines a multi-agent system designed to efficiently answer questions 
 ### Streaming Workflow Execution
 - `create_graph_stream`: Initializes the workflow graph and starts a streaming execution based on the given query, returning events that represent the steps taken in the workflow.
 
+## Langgraph Graph structure
+
+![image](https://github.com/saurav-dhait/Multi-Agent-Assistant/blob/main/img/graph.png)
+
 ## Requirements
 
 Ensure you have the following Python packages installed:
@@ -43,11 +47,7 @@ You can install the required packages using the following command:
 
 ```sh
 pip install -r requirements.txt
-``` 
-
-## Langgraph Graph structure
-
-![image](https://github.com/saurav-dhait/Multi-Agent-Assistant/blob/main/img/graph.png)
+```
 
 ## Running the code
 - To run the project, execute the `main.py` script:
