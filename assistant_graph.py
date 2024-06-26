@@ -14,9 +14,11 @@ from typing import Literal
 import operator
 from typing import Annotated, Sequence, TypedDict
 from dotenv import load_dotenv
+
 load_dotenv()
 
-def create_agent(llm, tools, system_message: str):
+
+def create_agent_1(llm, tools, system_message: str):
     """Create an agent."""
     prompt = ChatPromptTemplate.from_messages(
         [
@@ -102,7 +104,7 @@ def agent_node(state, agent, name):
 # Either agent can decide to end
 
 
-def router(state) -> Literal["call_tool", "__end__", "continue"]:
+def router_1(state):
     # This is the router
     messages = state["messages"]
     last_message = messages[-1]
@@ -139,7 +141,7 @@ def create_graph():
     normal_node = functools.partial(agent_node, agent=normal_agent, name="Normal")
 
     # Research agent and node
-    research_agent = create_agent(
+    research_agent = create_agent_1(
         llm,
         [TavilySearchResults(max_results=5)],
         system_message="You should provide accurate data for use.",
@@ -165,7 +167,7 @@ def create_graph():
     )
     workflow.add_conditional_edges(
         "Researcher",
-        router,
+        router_1,
         {"continue": "Normal", "call_tool": "call_tool", "__end__": END},
     )
 
