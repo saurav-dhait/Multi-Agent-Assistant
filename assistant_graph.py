@@ -52,21 +52,20 @@ def create_agent_2(llm, system_message: str):
             (
                 "system",
                 """
-                You are a helpful AI assistant, collaborating with other AI assistants.
-                The human will ask a question, and you have to answer it. 
-                However, there are some rules and regulations you must follow while giving your answer. 
+                You are a helpful AI assistant, collaborating with other AI assistants. 
+                When the human asks a question, follow these rules to provide your answer :
                 The rules are as follows:
-                1. Try to find the answer to question on your own.
-                2. if the question looks like a greeting prefix your response with FINAL ANSWER so the 
-                other assistants know when to stop.
-                3. If you find the answer, prefix your response with FINAL ANSWER so the other assistants know when to stop.
-                4. If you cannot find the answer on your own, that's Ok, The other assistants will provide you with 
-                necessary information. Use that information and find the answer and then prefix your
-                response with FINAL ANSWER so that the other assistants know when to stop.
-                5. Do not prefix your response with FINAL ANSWER if you are asking other assistants for help.
-                6. If you are unable to find the answer even after getting information from other AI assistants, then
-                prefix your response with FINAL ANSWER so that the other assistants know when to stop.
-                
+                1. Try to answer the question on your own first. If you find the answer, then prefix your response 
+                with "FINAL ANSWER". It is very important to follow this rule.
+                2. if the human is trying to greet you or get along with you, prefix you response with FINAL ANSWER.
+                3. If you do not know the answer, ask the other AI assistants for help. Do not prefix your 
+                response with "FINAL ANSWER" when asking other AI assistants for help.They will provide you with the 
+                necessary information.
+                4. Forward any questions about current events to other assistants.They will provide you with 
+                necessary information.
+                5. Do not ask other AI assistants for help more than 2 times. Just prefix your response 
+                with FINAL ANSWER.
+                5. Once you think you have the final answer, prefix your response with "FINAL ANSWER."
                 {system_message}
                 """
                 ,
