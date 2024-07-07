@@ -11,8 +11,17 @@ def main():
                        menu_items=None)
     # sidebar
     with st.sidebar:
-        st.subheader("Chat options : ")
+        st.subheader("Api Key")
+        tavily_api_key = st.text_input("Tavily API Key", key="file_qa_api_key", type="password")
+        st.subheader("")
+        st.subheader("")
+        st.subheader("Chat options ")
         clear_chat = st.button("Clear chat", type="primary")
+        st.subheader("")
+        st.subheader("")
+        st.subheader("Links")
+        "[LangGraph Tutorial](https://langchain-ai.github.io/langgraph/tutorials/)"
+        "[![Open in GitHub](https://github.com/codespaces/badge.svg)](https://github.com/saurav-dhait/Multi-Agent-Assistant)"
     # main body
     st.title("🤖 Multi-Agent-Assistant : ")
     if clear_chat:
@@ -38,8 +47,8 @@ def main():
                     flag = 1
                 else:
                     if flag:
-                        st.session_state.messages.append({"role": "assistant", "content": "Fetching more results...."})
-                        st.chat_message("assistant").write("Fetching more results....")
+                        st.session_state.messages.append({"role": "assistant", "content": "Asking other assistants for help...."})
+                        st.chat_message("assistant").write("Asking other assistants for help....")
                         flag = 0
 
 
